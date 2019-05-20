@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/action_recyclerview"
+            android:title="Recyclerview"
+            android:icon="@android:drawable/ic_dialog_info"/>
+    <item
+            android:id="@+id/action_viewpager"
+            android:title="ViewPager"
+            android:icon="@android:drawable/ic_dialog_email"/>
+    <item
+            android:id="@+id/action_prefs"
+            android:title="Preferences"
+            android:icon="@android:drawable/ic_input_add"/>
+    <item
+            android:id="@+id/action_new"
+            android:title="Option4"
+            android:icon="@android:drawable/ic_btn_speak_now"/>
+</menu>

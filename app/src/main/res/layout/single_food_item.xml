@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    app:cardCornerRadius="@dimen/cardview_compat_inset_shadow"
+                                    app:cardElevation="@dimen/cardview_compat_inset_shadow"
+                                    app:cardUseCompatPadding="true"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:scaleType="fitXY"
+                android:id="@+id/image"
+                android:background="@mipmap/ic_launcher"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/title"
+                android:text="Title"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-black"
+                android:textSize="20sp"
+                android:padding="20dp"/>
+
+        <TextView
+                android:id="@+id/description"
+                android:layout_margin="5dp"
+                android:text="Description"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <CheckBox
+            android:id="@+id/foodCheck"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</android.support.v7.widget.CardView>

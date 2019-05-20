@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    app:cardBackgroundColor="@color/white"
+                                    android:layout_gravity="center"
+                                    app:cardElevation="@dimen/brand_logo_height"
+                                    app:cardCornerRadius="@dimen/brand_logo_height"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.CardView
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardElevation="@dimen/brand_logo_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/confFoodImage"
+                        android:background="@mipmap/ic_launcher_round"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:text="title"
+                            android:textStyle="bold"
+                            android:id="@+id/confFoodTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <TextView
+                            android:id="@+id/confDescription"
+                            android:text="description"
+                            android:textStyle="italic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <TextView
+                        android:id="@+id/confPricing"
+                        android:text="19.99"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/confRemoveTV"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="italic"
+                        android:layout_marginStart="40dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="remove"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <View
+            android:id="@+id/confView"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"/>
+
+        <android.support.v7.widget.CardView
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardElevation="@dimen/brand_logo_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/confCardsName"
+                        android:text="Name"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <TextView
+                        android:id="@+id/confCardsNum"
+                        android:text="**** **** 54854"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/confTotalPrice"
+                    android:text="19.99"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <Button
+                android:id="@+id/confButton"
+                android:text="Confirm Purchase"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
