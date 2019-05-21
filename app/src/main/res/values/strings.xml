@@ -7,4 +7,10 @@
 
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+
+    <string name="no_location_detected">no_location_detected</string>
+    <string name="permission_rationale">permission_rationale</string>
+    <string name="permission_denied_explanation">permission_denied_explanation</string>
+    <string name="settings">settings</string>
+
 </resources>

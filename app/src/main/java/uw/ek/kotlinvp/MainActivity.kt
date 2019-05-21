@@ -1,6 +1,7 @@
 package uw.ek.kotlinvp
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
@@ -43,11 +44,11 @@ class MainActivity : AppCompatActivity() {
         drawerToggle.isDrawerIndicatorEnabled = true
         drawer_layout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
-//        val intent = Intent(this, ViewPagerActivity::class.java)
+        val locIntnt = Intent(this, LocationActivity::class.java)
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.action_recyclerview -> toast("Option 1 Selected")
+                R.id.action_location -> startActivity(locIntnt)
                 R.id.action_viewpager -> toast("Option 2 Selected")
                 R.id.action_prefs -> toast("Option 3 Selected")
                 R.id.action_new -> {
