@@ -32,19 +32,31 @@ class ConfirmationFragment : Fragment(), View.OnClickListener {
 
         val confButton: Button= view.findViewById(R.id.confButton)
         confButton.setOnClickListener(this)
-        val confTotalPrice: TextView = view.findViewById(R.id.confTotalPrice)
         val confCardsNum : TextView = view.findViewById(R.id.confCardsNum)
-//        confCardsNum.text = CheckoutData.checkoutCardNum()._cardNumber
         val confCardsName : TextView = view.findViewById(R.id.confCardsName)
-//        confCardsName.text = CheckoutData.checkoutCardName()._cardName
         val confRemoveTV : TextView = view.findViewById(R.id.confRemoveTV)
         confRemoveTV.setOnClickListener(this)
         val confPricing : TextView = view.findViewById(R.id.confPricing)
-//        confCardsName.text = CheckoutData.checkoutPrice()._price.toString()
+        confPricing.text = CheckoutData.Data.foodPrice.toString()
         val confDescription : TextView = view.findViewById(R.id.confDescription)
         val confFoodTitle : TextView = view.findViewById(R.id.confFoodTitle)
+        confFoodTitle.text = CheckoutData.Data.foodName
         val confFoodImage : ImageView = view.findViewById(R.id.confFoodImage)
 
+        val confTotalPrice: TextView = view.findViewById(R.id.confTotalPrice)
+        confTotalPrice.text = confPricing.text.toString()
+        if(CheckoutData.Data.cardName.equals("")){
+            confCardsName.text = "John Hancock"
+        }else{ confCardsName.text = CheckoutData.Data.cardName        }
+        if(CheckoutData.Data.cardName.equals("")){
+            confCardsNum.text = "1234 5678 5555"
+        }else{confCardsNum.text = CheckoutData.Data.cardNum }
+        if(CheckoutData.Data.foodName.equals("")){
+            confFoodTitle.text = "#9 Super Sub"
+        }else{confFoodTitle.text = CheckoutData.Data.foodName }
+        if(CheckoutData.Data.foodPrice.equals("")){
+            confPricing.text = "5.99"
+        }else{confPricing.text = CheckoutData.Data.foodPrice.toString() }
 
     }
 

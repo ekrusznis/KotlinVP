@@ -4,18 +4,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
             android:id="@+id/action_recyclerview"
-            android:title="Recyclerview"
+            android:title="Option 1"
             android:icon="@android:drawable/ic_dialog_info"/>
     <item
             android:id="@+id/action_viewpager"
-            android:title="ViewPager"
+            android:title="Option 2"
             android:icon="@android:drawable/ic_dialog_email"/>
     <item
             android:id="@+id/action_prefs"
-            android:title="Preferences"
+            android:title="Option 3"
             android:icon="@android:drawable/ic_input_add"/>
     <item
             android:id="@+id/action_new"
-            android:title="Option4"
+            android:title="Option 4"
             android:icon="@android:drawable/ic_btn_speak_now"/>
 </menu>

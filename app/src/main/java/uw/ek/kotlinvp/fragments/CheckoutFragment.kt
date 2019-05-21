@@ -37,13 +37,10 @@ class CheckoutFragment : Fragment(),AdapterView.OnItemSelectedListener {
             subdesc.text = sharedPreference.sharedPref.getString("description", "description")
 
             confirmButton.setOnClickListener(View.OnClickListener {
-                val cardnum: String = creditCardView.cardNumber
-                val cardName: String = creditCardView.cardName
-                MainActivity.dataSet.setCardName(cardName)
-                MainActivity.dataSet.setCardNum(cardnum)
-                MainActivity.dataSet.setPrice(9.99.toInt())
-                MainActivity.dataSet.setCardName("Super Sub")
-
+                CheckoutData.Data.cardName = creditCardView.cardName
+                CheckoutData.Data.cardNum = creditCardView.cardNumber
+                CheckoutData.Data.foodPrice = 5.99
+                CheckoutData.Data.foodName = subname.text.toString()
 
             })
 

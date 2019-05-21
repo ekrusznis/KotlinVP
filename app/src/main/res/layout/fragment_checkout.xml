@@ -87,6 +87,7 @@
                 app:cardNumberFormat="masked_all_but_last_four"
                 app:cardNameTextColor="#cccccc"
                 app:type="auto"
+                app:isFlippable="true"
                 app:brandLogo="@mipmap/ic_launcher"
                 app:putChip="true"
                 app:expiryDate = ""
@@ -102,7 +103,7 @@
                 android:background="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:text="Confirm Purchase"
+                android:text="Confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

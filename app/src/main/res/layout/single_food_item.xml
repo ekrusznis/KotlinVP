@@ -4,6 +4,7 @@
                                     app:cardCornerRadius="@dimen/cardview_compat_inset_shadow"
                                     app:cardElevation="@dimen/cardview_compat_inset_shadow"
                                     app:cardUseCompatPadding="true"
+                                    android:id="@+id/cvFood"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 

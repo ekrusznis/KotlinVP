@@ -3,7 +3,6 @@
                                     xmlns:app="http://schemas.android.com/apk/res-auto"
                                     app:cardBackgroundColor="@color/white"
                                     android:layout_gravity="center"
-                                    app:cardElevation="@dimen/brand_logo_height"
                                     app:cardCornerRadius="@dimen/brand_logo_height"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
@@ -31,9 +30,9 @@
 
                 <ImageView
                         android:id="@+id/confFoodImage"
-                        android:background="@mipmap/ic_launcher_round"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:background="@drawable/jersey_fav_reg"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"/>
 
                 <LinearLayout
                         android:orientation="vertical"
@@ -57,7 +56,7 @@
 
                 <TextView
                         android:id="@+id/confPricing"
-                        android:text="19.99"
+                        android:text="9.99"
                         android:textColor="@color/colorPrimary"
                         android:layout_margin="20dp"
                         android:textStyle="bold"
@@ -70,7 +69,7 @@
                         android:textStyle="italic"
                         android:layout_marginStart="40dp"
                         android:layout_gravity="center_vertical"
-                        android:text="remove"
+                        android:text="X"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -100,11 +99,13 @@
                 <TextView
                         android:id="@+id/confCardsName"
                         android:text="Name"
+                        android:layout_marginStart="10dp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 <TextView
                         android:id="@+id/confCardsNum"
+                        android:layout_marginStart="10dp"
                         android:text="**** **** 54854"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -115,6 +116,7 @@
                     android:id="@+id/confTotalPrice"
                     android:text="19.99"
                     android:layout_alignParentEnd="true"
+                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>

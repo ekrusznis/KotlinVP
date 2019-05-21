@@ -1,10 +1,12 @@
 package uw.ek.kotlinvp
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import uw.ek.kotlinvp.adapters.FoodVPAdapter
 
@@ -45,39 +47,21 @@ class MainActivity : AppCompatActivity() {
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId) {
-//                R.id.action_recyclerview -> toast("RV clicked")
-//                R.id.action_viewpager -> startActivity(intent)
-//                R.id.action_prefs -> toast("Prefs clicked")
-//                R.id.action_new -> {
-                // Multiline action
-//                    toast("New clicked")
-//                }
+                R.id.action_recyclerview -> toast("Option 1 Selected")
+                R.id.action_viewpager -> toast("Option 2 Selected")
+                R.id.action_prefs -> toast("Option 3 Selected")
+                R.id.action_new -> {
+                    toast("Option 4 Selected")
+                }
 
             }
             drawer_layout.closeDrawer(GravityCompat.START)
             true
         }
     }
-        class dataSet(){
-        class setCardName(cardNameInput: String){
-            var cardName: String = cardNameInput
-                get() = field
-        }
-            class setCardNum(cardNumberInput: String){
-                var cardNumber: String = cardNumberInput
-           }
 
-            class setFoodNameItem(foodItemNameInput: String){
-                var foodItemName: String = foodItemNameInput
-                    get() = field
-            }
-            class setPrice(priceInput: Int){
-                var price: Int = priceInput
-                    get() = field
-            }
-
-
+    private fun Context.toast(message:String){
+        Toast.makeText(applicationContext,message, Toast.LENGTH_SHORT).show()
     }
-
 }
 
