@@ -47,12 +47,12 @@
             android:layout_toRightOf="@+id/longitude"
             android:textSize="16sp"/>
 
-    <com.mapbox.mapboxsdk.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_below="@+id/longitude_textview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            mapbox:mapbox_cameraZoom="11" />
+    <!--<com.mapbox.mapboxsdk.maps.MapView-->
+            <!--android:id="@+id/mapView"-->
+            <!--android:layout_below="@+id/longitude_textview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--mapbox:mapbox_cameraZoom="11" />-->
 
 
 

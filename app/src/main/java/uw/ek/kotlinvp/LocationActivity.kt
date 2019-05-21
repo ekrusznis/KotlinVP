@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.support.annotation.NonNull
 import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
@@ -22,11 +23,9 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraPosition
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.maps.MapView
-import com.mapbox.mapboxsdk.maps.MapboxMapOptions
-import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
-import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.mapboxsdk.maps.*
 import kotlinx.android.synthetic.main.activity_location.*
 
 class LocationActivity : AppCompatActivity(){
@@ -35,75 +34,76 @@ class LocationActivity : AppCompatActivity(){
     protected var mLastLocation: Location? = null
     private var mLatitudeText: TextView? = null
     private var mLongitudeText: TextView? = null
-//    private var mapView: MapView? = null
-//    private var option : MapboxMapOptions? = null
+    private var mapView: MapView? = null
+    private var option : MapboxMapOptions? = null
+
+    private var map: MapboxMap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Mapbox.getInstance(this, "pk.eyJ1IjoiZWtydXN6bmlzIiwiYSI6ImNqb2s1dW1zMzBjamYzcnBhemx5bDhrMzcifQ.ciKsvfJ7XmbNhgBE3Mx3EA");
+//        Mapbox.getInstance(
+//            this,
+//            "pk.eyJ1IjoiZWtydXN6bmlzIiwiYSI6ImNqb2s1dW1zMzBjamYzcnBhemx5bDhrMzcifQ.ciKsvfJ7XmbNhgBE3Mx3EA"
+//        );
         setContentView(R.layout.activity_location)
-
 //        mapView = findViewById<MapView>(R.id.mapView) as MapView
-////        mapView!!.onCreate(savedInstanceState)
+//        mapView!!.onCreate(savedInstanceState)
 //        mapView!!.getMapAsync({
 //            it.setStyle(Style.SATELLITE)
-//            // Customize map with markers, polylines, etc.
-//            fun OnMapReadyCallback() {}
 //        })
+//
 
 
         mLatitudeText = findViewById<View>(R.id.latitude_textview) as TextView?
         mLongitudeText = findViewById<View>(R.id.longitude_textview) as TextView?
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//        onStart()
     }
 
     public override fun onStart() {
         super.onStart()
 //        mapView!!.onStart()
-
         if (!checkPermissions()) {
             requestPermissions()
         } else {
             getLastLocation()
         }
+
+
     }
 
-    /**
-     * Provides a simple way of getting a device's location and is well suited for
-     * applications that do not require a fine-grained location and that do not need location
-     * updates. Gets the best and most recent location currently available, which may be null
-     * in rare cases when a location is not available.
-     *
-     *
-     * Note: this method should be called after location permission has been granted.
-     */
-    @SuppressLint("MissingPermission")
+
     private fun getLastLocation() {
-        mFusedLocationClient!!.lastLocation
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful && task.result != null) {
-                    mLastLocation = task.result
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+            || ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            mFusedLocationClient!!.lastLocation
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful && task.result != null) {
+                        mLastLocation = task.result
 
 
-                    mLatitudeText!!.text= mLastLocation?.latitude.toString()
-                    Log.i("LAT", mLastLocation?.latitude.toString())
-                    mLongitudeText!!.text =mLastLocation?.longitude.toString()
-                    Log.i("LONG", mLastLocation?.longitude.toString())
-//                    option = MapboxMapOptions()
-//                        .camera(
-//                            CameraPosition.Builder()
-//                                .target(LatLng(mLastLocation?.latitude!!.toDouble(), mLastLocation?.longitude!!.toDouble()))
-//                                .zoom(12.0)
-//                                .build()
+                        mLatitudeText!!.text = mLastLocation?.latitude.toString()
+                        Log.i("LAT", mLastLocation?.latitude.toString())
+                        mLongitudeText!!.text = mLastLocation?.longitude.toString()
+                        Log.i("LONG", mLastLocation?.longitude.toString())
 //
+//                        map?.animateCamera(
+//                            CameraUpdateFactory.newLatLngZoom(
+//                                LatLng(
+//                                    mLastLocation?.latitude!!,
+//                                    mLastLocation?.longitude!!
+//                                ), 30.0
+//                            )
 //                        )
 
 
-                } else {
-                    Log.w(TAG, "getLastLocation:exception", task.exception)
-                    showMessage(getString(R.string.no_location_detected))
+                    } else {
+                        Log.w(TAG, "getLastLocation:exception", task.exception)
+                        showMessage(getString(R.string.no_location_detected))
+                    }
                 }
-            }
+        }
     }
 
     /**
