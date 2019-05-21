@@ -1,15 +1,18 @@
 package uw.ek.kotlinvp.fragments
 
+import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v7.app.AlertDialog
+import android.support.v7.view.ContextThemeWrapper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.vinaygaba.creditcardview.CreditCardView
 import kotlinx.android.synthetic.main.fragment_checkout.*
 import org.w3c.dom.Text
@@ -62,8 +65,26 @@ class ConfirmationFragment : Fragment(), View.OnClickListener {
 
 
     override fun onClick(v: View?) {
+        val item_id = v?.id
+        when (item_id) {
+            R.id.confButton-> runDialog(v.context)
+
+
+
+        }
 
     }
 
+    fun runDialog(cx: Context) {
+        Log.i("runDialog", "here")
+        val dialogBuilder = AlertDialog.Builder(cx)
+        dialogBuilder.setMessage("Thank you for your purchase, your order should be ready soon!")
+            .setPositiveButton("OK", DialogInterface.OnClickListener {
+                    dialog, id -> dialog.dismiss()
+            })
+        val alert = dialogBuilder.create()
+        alert.setTitle("Completed")
+        alert.show()
 
+    }
 }

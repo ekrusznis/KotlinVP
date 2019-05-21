@@ -34,8 +34,8 @@ class LocationActivity : AppCompatActivity(){
     protected var mLastLocation: Location? = null
     private var mLatitudeText: TextView? = null
     private var mLongitudeText: TextView? = null
-    private var mapView: MapView? = null
-    private var option : MapboxMapOptions? = null
+//    private var mapView: MapView? = null
+//    private var option : MapboxMapOptions? = null
 
     private var map: MapboxMap? = null
 
@@ -82,20 +82,10 @@ class LocationActivity : AppCompatActivity(){
                     if (task.isSuccessful && task.result != null) {
                         mLastLocation = task.result
 
-
                         mLatitudeText!!.text = mLastLocation?.latitude.toString()
                         Log.i("LAT", mLastLocation?.latitude.toString())
                         mLongitudeText!!.text = mLastLocation?.longitude.toString()
                         Log.i("LONG", mLastLocation?.longitude.toString())
-//
-//                        map?.animateCamera(
-//                            CameraUpdateFactory.newLatLngZoom(
-//                                LatLng(
-//                                    mLastLocation?.latitude!!,
-//                                    mLastLocation?.longitude!!
-//                                ), 30.0
-//                            )
-//                        )
 
 
                     } else {
