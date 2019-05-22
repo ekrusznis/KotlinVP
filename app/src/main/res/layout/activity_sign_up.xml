@@ -3,7 +3,7 @@
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
-                                             android:background="@color/colorPrimary"
+                                             android:background="@color/colorPrimaryDark"
                                              android:layout_height="match_parent"
                                              tools:context=".activity.SignupActivity">
 
@@ -13,7 +13,7 @@
     <android.support.v7.widget.CardView
             app:cardUseCompatPadding="true"
             android:layout_centerInParent="true"
-            app:cardCornerRadius="@dimen/brand_logo_height"
+            app:cardCornerRadius="5dp"
             app:cardBackgroundColor="@color/white"
             app:cardElevation="@dimen/brand_logo_height"
             android:layout_width="wrap_content"
@@ -21,6 +21,7 @@
 
     <LinearLayout
             android:orientation="vertical"
+            android:layout_margin="4dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -84,6 +85,7 @@
         <TextView
                 android:id="@+id/loginTxt"
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
