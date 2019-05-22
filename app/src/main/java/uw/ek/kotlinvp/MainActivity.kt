@@ -45,11 +45,12 @@ class MainActivity : AppCompatActivity() {
         drawer_layout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
         val locIntnt = Intent(this, LocationActivity::class.java)
+        val loginIntnt = Intent(this, LoginActivity::class.java)
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_location -> startActivity(locIntnt)
-                R.id.action_viewpager -> toast("Option 2 Selected")
+                R.id.action_viewpager -> startActivity(loginIntnt)
                 R.id.action_prefs -> toast("Option 3 Selected")
                 R.id.action_new -> {
                     toast("Option 4 Selected")

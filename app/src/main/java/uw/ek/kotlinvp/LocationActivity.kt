@@ -21,43 +21,35 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.mapbox.mapboxsdk.Mapbox
-import com.mapbox.mapboxsdk.camera.CameraPosition
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
-import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_location.*
 
-class LocationActivity : AppCompatActivity(){
+class LocationActivity : AppCompatActivity(), OnMapReadyCallback{
     val REQUEST_PERMISSIONS_REQUEST_CODE : Int = 123
     private var mFusedLocationClient: FusedLocationProviderClient? = null
     protected var mLastLocation: Location? = null
     private var mLatitudeText: TextView? = null
     private var mLongitudeText: TextView? = null
-//    private var mapView: MapView? = null
-//    private var option : MapboxMapOptions? = null
-
-    private var map: MapboxMap? = null
+    private lateinit var mMap: GoogleMap
+    val ZOOM_LEVEL = 18f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        Mapbox.getInstance(
-//            this,
-//            "pk.eyJ1IjoiZWtydXN6bmlzIiwiYSI6ImNqb2s1dW1zMzBjamYzcnBhemx5bDhrMzcifQ.ciKsvfJ7XmbNhgBE3Mx3EA"
-//        );
         setContentView(R.layout.activity_location)
-//        mapView = findViewById<MapView>(R.id.mapView) as MapView
-//        mapView!!.onCreate(savedInstanceState)
-//        mapView!!.getMapAsync({
-//            it.setStyle(Style.SATELLITE)
-//        })
-//
 
+        val mapFragment : SupportMapFragment? =
+            supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
 
         mLatitudeText = findViewById<View>(R.id.latitude_textview) as TextView?
         mLongitudeText = findViewById<View>(R.id.longitude_textview) as TextView?
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-//        onStart()
+
     }
 
     public override fun onStart() {
@@ -66,14 +58,18 @@ class LocationActivity : AppCompatActivity(){
         if (!checkPermissions()) {
             requestPermissions()
         } else {
-            getLastLocation()
+//            getLastLocation()
         }
 
 
     }
 
+    override fun onMapReady(googleMap: GoogleMap?) {
+        getLastLocation(googleMap)
+    }
 
-    private fun getLastLocation() {
+
+    private fun getLastLocation(googleMap: GoogleMap?) {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
             || ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
@@ -86,6 +82,12 @@ class LocationActivity : AppCompatActivity(){
                         Log.i("LAT", mLastLocation?.latitude.toString())
                         mLongitudeText!!.text = mLastLocation?.longitude.toString()
                         Log.i("LONG", mLastLocation?.longitude.toString())
+                        val sydney = LatLng(mLastLocation!!.latitude, mLastLocation!!.longitude)
+
+                        with(googleMap) {
+                            this?.moveCamera(com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(sydney, ZOOM_LEVEL))
+                            this?.addMarker(com.google.android.gms.maps.model.MarkerOptions().position(sydney))
+                        }
 
 
                     } else {
@@ -96,11 +98,6 @@ class LocationActivity : AppCompatActivity(){
         }
     }
 
-    /**
-     * Shows a [] using `text`.
-
-     * @param text The Snackbar text.
-     */
     private fun showMessage(text: String) {
         val container = findViewById<View>(R.id.main_activity_container)
         if (container != null) {
@@ -108,25 +105,13 @@ class LocationActivity : AppCompatActivity(){
         }
     }
 
-    /**
-     * Shows a [].
-
-     * @param mainTextStringId The id for the string resource for the Snackbar text.
-     * *
-     * @param actionStringId   The text of the action item.
-     * *
-     * @param listener         The listener associated with the Snackbar action.
-     */
     private fun showSnackbar(mainTextStringId: Int, actionStringId: Int,
                              listener: View.OnClickListener) {
 
         Toast.makeText(this@LocationActivity, getString(mainTextStringId), Toast.LENGTH_LONG).show()
     }
 
-    /**
-     * Return the current state of the permissions needed.
-     */
-    private fun checkPermissions(): Boolean {
+private fun checkPermissions(): Boolean {
         val permissionState = ActivityCompat.checkSelfPermission(this,
             Manifest.permission.ACCESS_COARSE_LOCATION)
         return permissionState == PackageManager.PERMISSION_GRANTED
@@ -142,8 +127,6 @@ class LocationActivity : AppCompatActivity(){
         val shouldProvideRationale = ActivityCompat.shouldShowRequestPermissionRationale(this,
             Manifest.permission.ACCESS_COARSE_LOCATION)
 
-        // Provide an additional rationale to the user. This would happen if the user denied the
-        // request previously, but didn't check the "Don't ask again" checkbox.
         if (shouldProvideRationale) {
             Log.i(TAG, "Displaying permission rationale to provide additional context.")
 
@@ -155,39 +138,22 @@ class LocationActivity : AppCompatActivity(){
 
         } else {
             Log.i(TAG, "Requesting permission")
-            // Request permission. It's possible this can be auto answered if device policy
-            // sets the permission in a given state or the user denied the permission
-            // previously and checked "Never ask again".
             startLocationPermissionRequest()
         }
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
         Log.i(TAG, "onRequestPermissionResult")
         if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
             if (grantResults.size <= 0) {
-                // If user interaction was interrupted, the permission request is cancelled and you
-                // receive empty arrays.
+
                 Log.i(TAG, "User interaction was cancelled.")
             } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted.
-                getLastLocation()
+//                getLastLocation()
             } else {
-                // Permission denied.
 
-                // Notify the user via a SnackBar that they have rejected a core permission for the
-                // app, which makes the Activity useless. In a real app, core permissions would
-                // typically be best requested during a welcome-screen flow.
-
-                // Additionally, it is important to remember that a permission might have been
-                // rejected without asking the user for permission (device policy or "Never ask
-                // again" prompts). Therefore, a user interface affordance is typically implemented
-                // when permissions are denied. Otherwise, your app could appear unresponsive to
-                // touches or interactions which have required permissions.
                 showSnackbar(R.string.permission_denied_explanation, R.string.settings,
                     View.OnClickListener {
                         // Build intent that displays the App settings screen.
@@ -213,31 +179,25 @@ class LocationActivity : AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-//        mapView!!.onResume()
 
     }
     override fun onPause() {
         super.onPause()
-//        mapView!!.onPause()
     }
     override fun onStop() {
         super.onStop()
-//        mapView!!.onStop()
 
     }
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-//        mapView!!.onSaveInstanceState(outState)
 
     }
     override fun onLowMemory() {
         super.onLowMemory()
-//        mapView!!.onLowMemory()
 
     }
     override fun onDestroy() {
         super.onDestroy()
-//        mapView!!.onDestroy()
     }
 
 }

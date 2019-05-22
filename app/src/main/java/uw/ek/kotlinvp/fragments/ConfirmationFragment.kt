@@ -69,8 +69,6 @@ class ConfirmationFragment : Fragment(), View.OnClickListener {
         when (item_id) {
             R.id.confButton-> runDialog(v.context)
 
-
-
         }
 
     }

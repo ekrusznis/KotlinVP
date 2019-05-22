@@ -13,4 +13,6 @@
     <string name="permission_denied_explanation">permission_denied_explanation</string>
     <string name="settings">settings</string>
 
+    <string name="google_maps_key">AIzaSyALCqxzseqwC6Y4dZy3e4UHx_422-t8AQs</string>
+
 </resources>
