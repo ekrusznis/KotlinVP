@@ -10,13 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import kotlinx.android.synthetic.main.single_food_item.view.*
-import uw.ek.kotlinvp.CustomViewPager.SwipeLockableViewPager
-import uw.ek.kotlinvp.MainActivity
 import uw.ek.kotlinvp.models.FoodModel
 import uw.ek.kotlinvp.R
 import uw.ek.kotlinvp.SharedPreference
-import uw.ek.kotlinvp.fragments.FoodFragment
 
 class FoodRVAdapter(private val list: List<FoodModel>)
     : RecyclerView.Adapter<FoodViewHolder>() {

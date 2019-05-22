@@ -2,21 +2,14 @@ package uw.ek.kotlinvp.fragments
 
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.app.AlertDialog
-import android.support.v7.view.ContextThemeWrapper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.vinaygaba.creditcardview.CreditCardView
-import kotlinx.android.synthetic.main.fragment_checkout.*
-import org.w3c.dom.Text
-import uw.ek.kotlinvp.MainActivity
 import uw.ek.kotlinvp.R
 import uw.ek.kotlinvp.models.CheckoutData
 

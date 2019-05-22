@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.TextView
 import com.vinaygaba.creditcardview.CreditCardView
 import kotlinx.android.synthetic.main.fragment_checkout.*
-import uw.ek.kotlinvp.MainActivity
 import uw.ek.kotlinvp.R
 import uw.ek.kotlinvp.SharedPreference
 import uw.ek.kotlinvp.models.CheckoutData

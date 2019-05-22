@@ -1,33 +1,27 @@
-package uw.ek.kotlinvp
+package uw.ek.kotlinvp.activity
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.support.annotation.NonNull
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_location.*
+import uw.ek.kotlinvp.BuildConfig
+import uw.ek.kotlinvp.R
 
 class LocationActivity : AppCompatActivity(), OnMapReadyCallback{
     val REQUEST_PERMISSIONS_REQUEST_CODE : Int = 123
@@ -130,7 +124,8 @@ private fun checkPermissions(): Boolean {
         if (shouldProvideRationale) {
             Log.i(TAG, "Displaying permission rationale to provide additional context.")
 
-            showSnackbar(R.string.permission_rationale, android.R.string.ok,
+            showSnackbar(
+                R.string.permission_rationale, android.R.string.ok,
                 View.OnClickListener {
                     // Request permission
                     startLocationPermissionRequest()
@@ -154,7 +149,8 @@ private fun checkPermissions(): Boolean {
 //                getLastLocation()
             } else {
 
-                showSnackbar(R.string.permission_denied_explanation, R.string.settings,
+                showSnackbar(
+                    R.string.permission_denied_explanation, R.string.settings,
                     View.OnClickListener {
                         // Build intent that displays the App settings screen.
                         val intent = Intent()

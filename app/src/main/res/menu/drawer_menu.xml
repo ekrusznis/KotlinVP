@@ -12,7 +12,7 @@
             android:icon="@android:drawable/ic_dialog_email"/>
     <item
             android:id="@+id/action_prefs"
-            android:title="Option 3"
+            android:title="Settings Example"
             android:icon="@android:drawable/ic_input_add"/>
     <item
             android:id="@+id/action_new"

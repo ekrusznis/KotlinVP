@@ -1,4 +1,4 @@
-package uw.ek.kotlinvp
+package uw.ek.kotlinvp.activity
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import uw.ek.kotlinvp.R
 import uw.ek.kotlinvp.adapters.FoodVPAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -46,12 +47,13 @@ class MainActivity : AppCompatActivity() {
         drawerToggle.syncState()
         val locIntnt = Intent(this, LocationActivity::class.java)
         val loginIntnt = Intent(this, LoginActivity::class.java)
+        val prefsIntnt = Intent(this, SettingsActivity::class.java)
 
         navigation_view.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.action_location -> startActivity(locIntnt)
                 R.id.action_viewpager -> startActivity(loginIntnt)
-                R.id.action_prefs -> toast("Option 3 Selected")
+                R.id.action_prefs ->  startActivity(prefsIntnt)
                 R.id.action_new -> {
                     toast("Option 4 Selected")
                 }

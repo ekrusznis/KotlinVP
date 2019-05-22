@@ -13,24 +13,26 @@
             android:roundIcon="@drawable/jmlogo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".SignupActivity">
+        <activity android:name=".activity.SettingsActivity">
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.SignupActivity">
         </activity>
-        <activity android:name=".LocationActivity">
+        <activity android:name=".activity.LoginActivity">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.LocationActivity">
+        </activity>
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
-                android:value="@string/google_maps_key" />
-
+                android:value="@string/google_maps_key"/>
     </application>
 
 </manifest>
