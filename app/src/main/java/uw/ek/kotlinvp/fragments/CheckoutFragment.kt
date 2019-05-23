@@ -12,7 +12,7 @@ import android.widget.TextView
 import com.vinaygaba.creditcardview.CreditCardView
 import kotlinx.android.synthetic.main.fragment_checkout.*
 import uw.ek.kotlinvp.R
-import uw.ek.kotlinvp.SharedPreference
+import uw.ek.kotlinvp.utils.SharedPreference
 import uw.ek.kotlinvp.models.CheckoutData
 
 class CheckoutFragment : Fragment(),AdapterView.OnItemSelectedListener {
@@ -24,7 +24,8 @@ class CheckoutFragment : Fragment(),AdapterView.OnItemSelectedListener {
     }
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            val sharedPreference: SharedPreference = SharedPreference(view.context)
+            val sharedPreference: SharedPreference =
+                SharedPreference(view.context)
             val TAG: String = "CheckoutFragment"
 
             val creditCardView : CreditCardView = view.findViewById(R.id.ccv)

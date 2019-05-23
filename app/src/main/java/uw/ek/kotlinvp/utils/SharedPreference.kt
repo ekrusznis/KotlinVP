@@ -1,4 +1,4 @@
-package uw.ek.kotlinvp
+package uw.ek.kotlinvp.utils
 
 import android.content.Context
 import android.content.SharedPreferences

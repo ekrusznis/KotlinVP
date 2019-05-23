@@ -13,6 +13,8 @@
             android:roundIcon="@drawable/jmlogo"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Calender.DailySpecials">
+        </activity>
         <activity android:name=".activity.SettingsActivity">
         </activity>
         <activity android:name=".activity.SignupActivity">

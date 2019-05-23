@@ -24,7 +24,7 @@
             android:title="List Preference" />
     <SwitchPreference
             android:key="switch"
-            android:title="Switch Preference"
+            android:title="Notifications"
             android:summary="Click to switch on or off"
             android:defaultValue="true"/>
 </PreferenceScreen>

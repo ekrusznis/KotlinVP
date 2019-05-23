@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import uw.ek.kotlinvp.models.FoodModel
 import uw.ek.kotlinvp.R
-import uw.ek.kotlinvp.SharedPreference
+import uw.ek.kotlinvp.utils.SharedPreference
 
 class FoodRVAdapter(private val list: List<FoodModel>)
     : RecyclerView.Adapter<FoodViewHolder>() {
@@ -40,7 +40,7 @@ class FoodViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private var mImageView: ImageView
     private val cardView: CardView
     private var foodCheck: CheckBox
-    val sharedPreference:SharedPreference= SharedPreference(parent.context)
+    val sharedPreference: SharedPreference = SharedPreference(parent.context)
     val editor: SharedPreferences.Editor = sharedPreference.sharedPref.edit()
     val TAG: String = "FoodRVAdapter"
 

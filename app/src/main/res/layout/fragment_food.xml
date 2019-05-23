@@ -5,6 +5,33 @@
               android:layout_gravity="center"
               android:layout_height="match_parent">
 
+    <LinearLayout
+            android:id="@+id/dailyspecLayout"
+            android:background="@color/offBlue"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/dailyspecimage"
+                android:background="@drawable/dailyspec"
+                android:layout_marginStart="10dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+        <TextView
+                android:id="@+id/dailyspecTV"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="center_vertical"
+                android:textSize="20sp"
+                android:layout_marginStart="30dp"
+                android:text="Click Here To See Our Daily Specials"
+                android:fontFamily="cursive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"

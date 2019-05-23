@@ -1,6 +1,7 @@
 package uw.ek.kotlinvp.fragments
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -9,13 +10,15 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_food.*
 import uw.ek.kotlinvp.models.FoodModel
 import uw.ek.kotlinvp.R
+import uw.ek.kotlinvp.Calender.DailySpecials
 import uw.ek.kotlinvp.adapters.FoodRVAdapter
 
-class FoodFragment : Fragment() {
+class FoodFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -27,6 +30,8 @@ class FoodFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Kotlin Example"
 
+        val dailySpecLayout: LinearLayout = view.findViewById(R.id.dailyspecLayout)
+        dailySpecLayout.setOnClickListener(this)
         val foodOptions = listOf(
             FoodModel(
                 "#2 Jersey Shores Favorite",
@@ -80,5 +85,14 @@ class FoodFragment : Fragment() {
 
     private fun Context.toast(message:String){
         Toast.makeText(applicationContext,message, Toast.LENGTH_SHORT).show()
+    }
+    override fun onClick(v: View?) {
+        val item_id = v?.id
+        when (item_id) {
+            R.id.dailyspecLayout -> v.context.startActivity(Intent(v.context, DailySpecials::class.java))
+
+
+        }
+
     }
 }
