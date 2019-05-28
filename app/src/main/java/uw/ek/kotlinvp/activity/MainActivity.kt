@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.View
@@ -55,7 +56,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.action_viewpager -> startActivity(loginIntnt)
                 R.id.action_prefs ->  startActivity(prefsIntnt)
                 R.id.action_new -> {
-                    toast("Option 4 Selected")
+//                    toast("Snackbar message")
+                    showMessage(navigation_view,"Snackbar message example...")
+
                 }
 
             }
@@ -67,5 +70,12 @@ class MainActivity : AppCompatActivity() {
     private fun Context.toast(message:String){
         Toast.makeText(applicationContext,message, Toast.LENGTH_SHORT).show()
     }
+    fun showMessage(view:View, message: String){
+        Snackbar
+            .make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null)
+            .setActionTextColor(resources.getColor(R.color.colorPrimary))
+            .show()
+    }
+
 }
 

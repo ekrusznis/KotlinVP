@@ -16,6 +16,6 @@
             android:icon="@android:drawable/ic_input_add"/>
     <item
             android:id="@+id/action_new"
-            android:title="Option 4"
+            android:title="Snackbar Example"
             android:icon="@android:drawable/ic_btn_speak_now"/>
 </menu>
